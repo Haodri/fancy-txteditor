@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>fancy-txteditor</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Nabla:EDPT,EHLT@0..200,0..24&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div id="editor-wrapper">
+    <div id="flow-bg">
+      <div id="flow-bar"></div>
+    </div>
+
+    <div id="toolbar">
+  <button id="btn-reset" type="button">Reset</button>
+  <button id="btn-export" type="button">Export .txt</button>
+  <button id="btn-heatmap" type="button" aria-pressed="true">Heatmap: An</button>
+  </div>
+
+    <div id="editor" contenteditable="true" spellcheck="false"></div>
+  </div>
+
+  <div id="speed-container">
+    <div id="speed-current">0.00 s</div>
+    <div id="speed-average">Ø 0.00 s</div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
