@@ -16,7 +16,7 @@ let smoothDiff = null;
 
 let heatmapEnabled = true;
 
-let currentWordSpans = [];
+let currentWordSpans = [];wwwwww
 let currentWordSpeeds = [];
 
 function clamp(v, min, max) {
@@ -31,10 +31,35 @@ function smooth(ms) {
 
 function getFontVariation(speedMs) {
   const tFast = clamp((1000 - speedMs) / 900, 0, 1);
-  const EDPT = Math.round(30 + tFast * 170); 
-  const EHLT = Math.round(tFast * 24);      
-  return { EDPT, EHLT };
+
+  const punch = Math.pow(tFast, 0.35);
+  const chaos = Math.pow(tFast, 2.0);
+
+  let wght = 200 + punch * 800;   
+  let slnt = -(12 * punch);      
+  let INKT = chaos;               
+  let MONO = chaos;              
+
+ 
+  if (tFast > 0.55) {
+    const intensity = (tFast - 0.55) / 0.45; 
+    const j = (Math.random() - 0.5) * 2 * intensity; 
+
+    
+    wght += j * 320;   
+    slnt += j * 5.5;   
+    INKT += j * 0.25;  
+    MONO += j * 0.25;  
+  }
+
+  wght = Math.round(clamp(wght, 200, 1000));
+  slnt = +clamp(slnt, -12, 0).toFixed(2);
+  INKT = +clamp(INKT, 0, 1).toFixed(3);
+  MONO = +clamp(MONO, 0, 1).toFixed(3);
+
+  return { wght, slnt, INKT, MONO };
 }
+
 
 function updateFlowMeter(speedMs) {
   const minSpeed = 100;
@@ -169,8 +194,9 @@ editor.addEventListener("keydown", (event) => {
   const span = document.createElement("span");
   span.textContent = event.key;
 
-  span.style.fontFamily = "'Nabla', system-ui, sans-serif";
-  span.style.fontVariationSettings = `"EDPT" ${vars.EDPT}, "EHLT" ${vars.EHLT}`;
+  span.style.fontFamily = '"ABC Whyte Plus Variable", system-ui, sans-serif';
+  span.style.fontVariationSettings =
+  `"wght" ${vars.wght}, "slnt" ${vars.slnt}, "INKT" ${vars.INKT}, "MONO" ${vars.MONO}`;
 
   const sel = window.getSelection();
   if (!sel.rangeCount) {

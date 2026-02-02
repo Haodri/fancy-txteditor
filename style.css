@@ -1,3 +1,10 @@
+@font-face {
+  font-family: "ABC Whyte Plus Variable";
+  src: url("fonts/ABCWhytePlusVariable-Trial.ttf") format("truetype-variations");
+  font-weight: 200 1000;
+  font-style: oblique -12deg 0deg;
+}
+
 html, body {
   margin: 0;
   padding: 0;
@@ -58,7 +65,8 @@ html, body {
   padding: 40px;
   box-sizing: border-box;
 
-  font-family: 'Nabla', system-ui, sans-serif;
+  font-family: "ABC Whyte Plus Variable", system-ui, sans-serif;
+
   font-size: 32px;
   line-height: 1.6;
   color: #000;
