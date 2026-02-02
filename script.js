@@ -16,7 +16,7 @@ let smoothDiff = null;
 
 let heatmapEnabled = true;
 
-let currentWordSpans = [];wwwwww
+let currentWordSpans = [];
 let currentWordSpeeds = [];
 
 function clamp(v, min, max) {
@@ -28,6 +28,8 @@ function smooth(ms) {
   smoothDiff = smoothDiff + SMOOTH_ALPHA * (ms - smoothDiff);
   return smoothDiff;
 }
+
+//Font-Speed; Wie schnell ändert sich die Font 
 
 function getFontVariation(speedMs) {
   const tFast = clamp((1000 - speedMs) / 900, 0, 1);
